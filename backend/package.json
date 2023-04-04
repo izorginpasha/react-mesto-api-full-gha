@@ -21,6 +21,7 @@
   "homepage": "https://github.com/izorginpasha/express-mesto-gha#readme",
   "dependencies": {
     "celebrate": "^15.0.1",
+    "cors": "^2.8.5",
     "debug": "^4.3.4",
     "debugger": "^1.0.0",
     "eslint": "^8.31.0",
