@@ -4,6 +4,7 @@ const mongoose = require("mongoose"); //
 const routerUsers = require("./routes/routerUsers"); //
 const routerCards = require("./routes/routerCards"); //
 const auth = require("./middlewares/auth");
+const cors = require('cors');
 const { Console } = require("console");
 const { errors } = require("celebrate");
 const { login, createUser } = require("./controllers/users");
@@ -28,6 +29,7 @@ const shemaUser = celebrate({
 
 const { PORT = 3000 } = process.env; //порт
 const app = express(); //создаем сервер
+app.use(cors())//защита корс
 // подключаем мидлвары, роуты и всё остальное...
 app.use(bodyParser.json());
 // подключаем главный роутер приложения на /api
