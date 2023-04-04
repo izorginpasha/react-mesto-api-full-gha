@@ -24,6 +24,7 @@
     "cors": "^2.8.5",
     "debug": "^4.3.4",
     "debugger": "^1.0.0",
+    "dotenv": "^16.0.3",
     "eslint": "^8.31.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.26.0",
