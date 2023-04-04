@@ -43,10 +43,19 @@ app.use(bodyParser.json());
 // подключаем главный роутер приложения на /api
 
 // роуты, не требующие авторизации,
+// раздаём папку с собранным фронтендом
 app.use(express.static(path.join(__dirname, "public")));
+// раняем сервер
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
+
+
 app.post("/signup", shemaUser, createUser);
 app.post("/signin", shemaUser, login);
-// раздаём папку с собранным фронтендом
+
 
 // авторизация
 app.use("/api/users", auth, routerUsers); //роуты на пути user
