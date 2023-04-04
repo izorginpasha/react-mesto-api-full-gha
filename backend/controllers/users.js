@@ -6,6 +6,7 @@ const NotFoundError = require("../erors/NotFoundError");
 const NecorrectDataError = require("../erors/NecorrectDataError");
 const EmailErors = require("../erors/EmailErors");
 const AuthErors = require("../erors/AuthErors");
+require('dotenv').config({ path: './.env'});
 const { GOOD, CREATE_GOOD } = require("../utils/constants");
 const {  key } = process.env;
 
