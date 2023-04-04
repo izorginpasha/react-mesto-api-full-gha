@@ -30,6 +30,11 @@ const shemaUser = celebrate({
 const { PORT = 3000 } = process.env; //порт
 const app = express(); //создаем сервер
 app.use(cors())//защита корс
+app.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', "*");// все запросы
+
+  next();
+});
 // подключаем мидлвары, роуты и всё остальное...
 app.use(bodyParser.json());
 // подключаем главный роутер приложения на /api
