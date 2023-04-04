@@ -28,7 +28,7 @@ const shemaUser = celebrate({
   }),
 });
 require('env').config({ path: './.env'});
-const { PORT = 3000 } = process.env; //порт
+const  PORT = 3000  //порт
 const app = express(); //создаем сервер
 app.use(cors())//защита корс
 app.use(function(req, res, next) {
