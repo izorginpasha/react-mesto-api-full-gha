@@ -27,7 +27,9 @@ const shemaUser = celebrate({
       ), // ссылка на аватарку
   }),
 });
-require('dotenv').config({ path: './.env'});
+require('dotenv').config({ path: './.env' })
+
+const { NODE_ENV, key } = process.env;
 const  PORT = 3000  //порт
 const app = express(); //создаем сервер
 app.use(cors())//защита корс
