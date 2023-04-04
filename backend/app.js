@@ -5,7 +5,7 @@ const routerUsers = require("./routes/routerUsers"); //
 const routerCards = require("./routes/routerCards"); //
 const auth = require("./middlewares/auth");
 const cors = require('cors');
-require('env').config({ path: './.env'})
+
 const { Console } = require("console");
 const { errors } = require("celebrate");
 const { login, createUser } = require("./controllers/users");
@@ -27,7 +27,7 @@ const shemaUser = celebrate({
       ), // ссылка на аватарку
   }),
 });
-
+require('env').config({ path: './.env'});
 const { PORT = 3000 } = process.env; //порт
 const app = express(); //создаем сервер
 app.use(cors())//защита корс
