@@ -5,7 +5,7 @@ const routerUsers = require("./routes/routerUsers"); //
 const routerCards = require("./routes/routerCards"); //
 const auth = require("./middlewares/auth");
 const cors = require('cors');
-require('env').config();
+require('env').config({ path: './.env'})
 const { Console } = require("console");
 const { errors } = require("celebrate");
 const { login, createUser } = require("./controllers/users");
