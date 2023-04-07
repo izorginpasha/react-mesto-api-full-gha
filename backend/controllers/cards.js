@@ -43,8 +43,8 @@ const deleteCard = async (req, res, next) => {
     if (cardOne === null) {
       throw new NotFoundError("Нет такои карточки");
     }
-    const userOne = await User.findById(req.user._id);
-    if (cardOne.owner.equals(userOne.id)) {
+
+    if (cardOne.owner.equals(req.user._id)) {
       const card = await Card.findByIdAndRemove(cardId);
 
       return res.status(GOOD.code).json(GOOD.message);
