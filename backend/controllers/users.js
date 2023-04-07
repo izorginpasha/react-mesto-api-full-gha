@@ -84,7 +84,7 @@ const createUser = async (req, res, next) => {
 const getUser = async (req, res, next) => {
   //получить отдельного пользователя
 
-  req.user = payload; // записываем пейлоуд в объект запроса
+   // записываем пейлоуд в объект запроса
   try {
     if (req.user._id === null) {
       throw new NotFoundError("Нет пользователя c таким id");
