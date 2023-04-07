@@ -8,7 +8,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 158.160.55.104
+IP-адрес 51.250.15.186
 
 Frontend izorgin.pasha.students.nomoredomains.club
 
