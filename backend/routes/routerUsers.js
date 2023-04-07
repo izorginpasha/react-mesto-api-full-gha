@@ -26,19 +26,23 @@ router.get("/", getUsers); //Возвращаеть всех пользоват�
 router.get("/me", getUser); //возвращает текущего пользователя
 router.get(
   "/:_id",
-  celebrate({
-    [Segments.PARAMS]: Joi.object().keys({
-      _id: Joi.string().length(24).hex(),
-    }),
-  }),
+  // celebrate({
+  //   [Segments.PARAMS]: Joi.object().keys({
+  //     _id: Joi.string().length(24).hex(),
+  //   }),
+  // }),
   getUserId
 ); //возвращает  пользователя по id
+router.post("/", shemaUser, createUser); //создает пользователя
 router.patch(
   "/me",
   celebrate({
     [Segments.BODY]: Joi.object().keys({
       name: Joi.string().min(2).max(30),
+      email: Joi.string().email(),
+      password: Joi.string(),
       about: Joi.string().min(2).max(30),
+      avatar: Joi.string().pattern(new RegExp("(www|http:|https:)+S*")),
     }),
   }),
   patchUsers

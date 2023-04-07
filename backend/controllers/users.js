@@ -84,7 +84,23 @@ const createUser = async (req, res, next) => {
 const getUser = async (req, res, next) => {
   //получить отдельного пользователя
 
-  // записываем пейлоуд в объект запроса
+  const { authorization } = req.headers;
+
+  if (!authorization || !authorization.startsWith("Bearer ")) {
+    return next(new AuthErors("Передан неверный логин или пароль"));
+  }
+
+  const token = authorization.replace("Bearer ", "");
+  let payload;
+
+  try {
+    payload = jwt.verify(token, key);
+  } catch (err) {
+    console.log(err);
+    return next(new AuthErors("Передан неверный логин или пароль"));
+  }
+
+  req.user = payload; // записываем пейлоуд в объект запроса
   try {
     if (req.user._id === null) {
       throw new NotFoundError("Нет пользователя c таким id");
