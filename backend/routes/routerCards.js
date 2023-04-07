@@ -11,8 +11,6 @@ const shemaCards = celebrate({
   [Segments.BODY]: Joi.object().keys({
     name: Joi.string().min(2).max(30).required(),// имя
     link: Joi.string().pattern (new RegExp('(www|http:|https:)+\S*')).required(),// ссылка
-    likes:Joi.object().default([]),
-    createdAt: Joi.date().default(Date.now),
   }),
 })
 routerCards.get('/', getCards) //Возвращаеть все карточки

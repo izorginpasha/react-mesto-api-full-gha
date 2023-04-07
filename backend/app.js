@@ -93,5 +93,8 @@ try {
 app.use(requestLogger); // подключаем логгер запросов
 app.use(errors());// обработчик ошибок celebrate
 app.use((err, req, res, next) => {// централизованный обработчик ошибок
-  res.status(err.statusCode).send({ message: err.message });
+  const statusCode = err.statusCode || 500;
+  const massage = err.statusCode === 500 ? "на сервере произошла ошибка" : err.message;
+  res.status(statusCode).send({ massage });
+
 });
