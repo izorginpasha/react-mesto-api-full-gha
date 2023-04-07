@@ -26,11 +26,11 @@ router.get("/", getUsers); //Возвращаеть всех пользоват�
 router.get("/me", getUser); //возвращает текущего пользователя
 router.get(
   "/:_id",
-  // celebrate({
-  //   [Segments.PARAMS]: Joi.object().keys({
-  //     _id: Joi.string().length(24).hex(),
-  //   }),
-  // }),
+  celebrate({
+    [Segments.PARAMS]: Joi.object().keys({
+      _id: Joi.string().length(24).hex(),
+    }),
+  }),
   getUserId
 ); //возвращает  пользователя по id
 router.patch(
