@@ -89,7 +89,7 @@ const user = await User.findById(req.user._id);
     if (user === null) {
       throw new NotFoundError("Нет пользователя c таким id");
     }
-    return res.status(GOOD.code).json(user.id);
+    return res.status(GOOD.code).json(req.user._id);
   } catch (e) {
     console.error(e);
     return next(e);
