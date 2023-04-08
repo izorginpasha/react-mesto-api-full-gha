@@ -85,6 +85,8 @@ const getUser = async (req, res, next) => {
   //получить отдельного пользователя
 const user = await User.findById(req.user._id);
    // записываем пейлоуд в объект запроса
+   console.log(req.user._id);
+   console.log(user._id);
   try {
     if (user === null) {
       throw new NotFoundError("Нет пользователя c таким id");
