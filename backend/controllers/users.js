@@ -89,7 +89,7 @@ const user = await User.findById(req.user._id);
     if (user === null) {
       throw new NotFoundError("Нет пользователя c таким id");
     }
-    return res.status(GOOD.code).json(user);
+    return res.status(GOOD.code).json(user.id);
   } catch (e) {
     console.error(e);
     return next(e);
@@ -108,7 +108,7 @@ const patchUsers = async (req, res, next) => {
       }
     );
 
-    return res.status(GOOD.code).json(user.id);
+    return res.status(GOOD.code).json(user);
   } catch (e) {
     console.error(e);
     if (e.name === "ValidationError") {
