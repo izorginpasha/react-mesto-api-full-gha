@@ -44,7 +44,7 @@ app.use(bodyParser.json());
 
 // роуты, не требующие авторизации,
 // раздаём папку с собранным фронтендом
-//app.use(express.static(path.join(__dirname, "../frontend")));
+app.use(express.static(path.join(__dirname, "../frontend")));
 // раняем сервер
 app.get('/crash-test', () => {
   setTimeout(() => {
