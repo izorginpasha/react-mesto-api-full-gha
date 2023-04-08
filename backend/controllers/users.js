@@ -108,7 +108,7 @@ const patchUsers = async (req, res, next) => {
       }
     );
 
-    return res.status(GOOD.code).json(user);
+    return res.status(GOOD.code).json(user.id);
   } catch (e) {
     console.error(e);
     if (e.name === "ValidationError") {
