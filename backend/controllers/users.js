@@ -82,7 +82,7 @@ const createUser = async (req, res, next) => {
   }
 };
 const getUser = async (req, res, next) => {
-  //получить отдельного пользователя
+  //получить id текущего пользователя после фвторизации
   const user = await User.findById(req.user._id);
 
    // записываем пейлоуд в объект запроса
@@ -90,7 +90,7 @@ const getUser = async (req, res, next) => {
     if (req.user._id === null) {
       throw new NotFoundError("Нет пользователя c таким id");
     }
-    return res.status(GOOD.code).json(user);
+    return res.status(GOOD.code).json(user._id);
   } catch (e) {
     console.error(e);
     return next(e);
