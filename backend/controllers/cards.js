@@ -43,7 +43,7 @@ const deleteCard = async (req, res, next) => {
     if (cardOne === null) {
       throw new NotFoundError("Нет такои карточки");
     }
-
+    const card = await Card.findByIdAndRemove(cardId);/// dell
     if (cardOne.owner.equals(req.user._id)) {
       const card = await Card.findByIdAndRemove(cardId);
 
