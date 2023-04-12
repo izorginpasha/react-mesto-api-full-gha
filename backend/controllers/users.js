@@ -90,7 +90,7 @@ const getUser = async (req, res, next) => {
     if (req.user._id === null) {
       throw new NotFoundError("Нет пользователя c таким id");
     }
-    return res.status(GOOD.code).json(user._id);
+    return res.status(GOOD.code).json(user);
   } catch (e) {
     console.error(e);
     return next(e);
