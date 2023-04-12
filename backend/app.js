@@ -10,7 +10,6 @@ const { Console } = require("console");
 const { errors } = require("celebrate");
 const { login, createUser } = require("./controllers/users");
 const NotFoundError = require("./erors/NotFoundError");
-const path = require("path");
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 // Слушаем 3000 порт
 const { celebrate, Joi, Segments } = require("celebrate");
@@ -29,7 +28,7 @@ const shemaUser = celebrate({
 });
 require('dotenv').config({ path: './.env' })
 
-const { NODE_ENV, key } = process.env;
+
 const  PORT = 3000  //порт
 const app = express(); //создаем сервер
 app.use(cors())//защита корс
