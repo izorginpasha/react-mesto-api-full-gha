@@ -26,7 +26,7 @@ const login = async (req, res, next) => {
   try {
     const body = { ...req.body };
     const { password, email } = body;
-    if (validator.isEmail(email)) {
+
       const user = await User.findOne({ email }).select("+password");
       if (!user) {
         return next(new AuthErors("Передан неверный логин или пароль"));
@@ -40,8 +40,8 @@ const login = async (req, res, next) => {
         }
         return next(new AuthErors("Передан неверный логин или пароль"));
       });
-    }
-    return next(new NecorrectDataError("Переданы некорректные данные"));
+
+
   } catch (e) {
     console.error(e);
     if (e.name === "ValidationError") {
@@ -56,7 +56,7 @@ const createUser = async (req, res, next) => {
   try {
     const body = { ...req.body };
     const { password, email } = body;
-    if (validator.isEmail(email)) {
+
       // хешируем пароль
       body.password = await bcrypt.hash(password, 10);
       // передаем базе
@@ -68,8 +68,8 @@ const createUser = async (req, res, next) => {
         avatar: user.avatar,
         _id: user._id,
       });
-    }
-    return next(new NecorrectDataError("Переданы некорректные данные"));
+
+
   } catch (e) {
     console.error(e);
     if (e.code === 11000) {
@@ -83,13 +83,14 @@ const createUser = async (req, res, next) => {
 };
 const getUser = async (req, res, next) => {
   //получить отдельного пользователя
+  const user = await User.findById(req.user._id);
 
    // записываем пейлоуд в объект запроса
   try {
     if (req.user._id === null) {
       throw new NotFoundError("Нет пользователя c таким id");
     }
-    return res.status(GOOD.code).json(req.user._id);
+    return res.status(GOOD.code).json(user);
   } catch (e) {
     console.error(e);
     return next(e);
@@ -138,7 +139,7 @@ const patchAvatarUsers = async (req, res, next) => {
   }
 };
 const getUserId = async (req, res, next) => {
-  //получить отдельного пользователя
+  //получить  отдельного пользователя
 
   try {
     const { _id } = req.params;
